@@ -15,7 +15,7 @@
 relu:
     # Prologue
     li   t0, 1
-    blt a0, t0, error
+    blt a1, t0, error
     li t1 0
     
 
