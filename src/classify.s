@@ -187,9 +187,6 @@ finish:
     jal ra, free
     
     mv a0, s10
-    jal ra, free
-    
-    mv a0, s10
     
     lw ra, 0(sp)
     lw s0, 4(sp)
