@@ -171,8 +171,8 @@ finish:
     mv a0, s2
     jal ra, free
     
-    mv a0, s3
-    jal ra, free
+    #mv a0, s3
+    #jal ra, free
 
     mv a0, s4
     jal ra, free
@@ -184,9 +184,6 @@ finish:
     jal ra, free
 
     mv a0, s7
-    jal ra, free
-    
-    mv a0, s10
     jal ra, free
     
     mv a0, s10
