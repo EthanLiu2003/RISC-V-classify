@@ -19,7 +19,7 @@
 #     this function terminates the program with error code 27
 #   - If you receive an fclose error or eof,
 #     this function terminates the program with error code 28
-#   - If you receive an fwrite error or eof,
+#   - If you receive an error or eof,
 #     this function terminates the program with error code 30
 # ==============================================================================
 write_matrix:
@@ -44,6 +44,8 @@ write_matrix:
     mv s2, a2
     mv s3, a3
     
+    mv a1, s1 #hi
+    
     #open with write permissions
     li a1, 1
     jal fopen
@@ -54,12 +56,12 @@ write_matrix:
     mv s4, a0
     
     #restore pointer to start of matrix in memory
-    mv a1, s1
+    #mv a1, s1
     addi a0, x0, 8
     #malloc storage for the rows and columns of the matrix in memory
     jal malloc
-    
-    
+    mv a1, s1 #hi
+   
     sw s2, 44(sp)
     sw s3, 48(sp)
     addi a1, sp, 44
@@ -70,6 +72,9 @@ write_matrix:
     jal fwrite
     bne a0, s7, error30
     
+    #mv a0, a1 # hi
+    jal ra, free
+    
     #reset a0 to pointer to start of filename descriptor
     mv a0, s4
     #reset to pointer at start of matrix in memory
@@ -79,7 +84,7 @@ write_matrix:
     li s8, 0
     add s8, s8, a2 #store number of elements
     li a3, 4 #each integer is 4 bytes
-    jal fwrite 
+    jal fwrite #hi
     bne s8, a0, error30
     
     mv a0, s4
@@ -99,8 +104,6 @@ write_matrix:
     lw s8, 36(sp)
     lw s9, 40(sp)
     addi sp, sp, 52
-    
-
 
 
     # Epilogue
