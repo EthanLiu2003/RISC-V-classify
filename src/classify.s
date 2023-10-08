@@ -168,6 +168,9 @@ print:
 
 finish:
     
+    mv a0, s2
+    jal ra, free
+    
     mv a0, s3
     jal ra, free
 

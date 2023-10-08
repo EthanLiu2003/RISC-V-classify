@@ -79,7 +79,7 @@ write_matrix:
     mv a0, s4
     #reset to pointer at start of matrix in memory
     mv a1, s1
-    #addi a1, a1, 8 #move pointer forward 8 bytes to skip row and col values
+    # addi a1, a1, 8 #move pointer forward 8 bytes to skip row and col values
     mul a2, s2, s3 # number of elements to write
     li s8, 0
     add s8, s8, a2 #store number of elements
