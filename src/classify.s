@@ -168,14 +168,14 @@ print:
 
 finish:
     
-#     mv a0, s3
-#     jal ra, free
+    mv a0, s3
+    jal ra, free
 
-#     mv a0, s4
-#     jal ra, free
+    mv a0, s4
+    jal ra, free
 
-#     mv a0, s5
-#     jal ra, free
+    mv a0, s5
+    jal ra, free
 
     mv a0, s6
     jal ra, free

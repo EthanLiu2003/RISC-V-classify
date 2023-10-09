@@ -26,7 +26,7 @@
 # ==============================================================================
 read_matrix:
     
-    addi sp, sp, -44
+    addi sp, sp, -52
     sw ra, 0(sp)
     sw s0, 4(sp)
     sw s1, 8(sp)
@@ -53,12 +53,12 @@ read_matrix:
     beq a0, t0, error27
     #save pointer to filename to s3
     mv s3 a0
-    li a0, 8
-    jal malloc
-    beq a0, x0, error26
+#     li a0, 8
+#     jal malloc
+#     beq a0, x0, error26
     
     #store allocated memory pointer in s4
-    mv s4, a0
+    addi s4, sp, 44
     #store pointer to file name back in a0 for fread call
     mv a0, s3
     #store allocated memory pointer back to a1
@@ -75,8 +75,8 @@ read_matrix:
     lw s9, 4(s4) #number of columns
     sw s8, 0(s1) #store in s1 which is pointer to rows
     sw s9, 0(s2) #store in s2 which is pointer to cols
-    mv a0, s4
-    jal free
+#     mv a0, s4
+#     jal ra, free
     
     #create heap memory for matrix
     mul a0, s8, s9
@@ -100,7 +100,6 @@ read_matrix:
     beq a0, t0, error28
     mv a0, s5
 
-
     # Epilogue
     lw ra, 0(sp)
     lw s0, 4(sp)
@@ -113,18 +112,33 @@ read_matrix:
     lw s7, 32(sp)
     lw s8, 36(sp)
     lw s9, 40(sp)
-    addi sp, sp, 44
+    addi sp, sp, 52
 
     jr ra
+
 error26:
-    li a0 26
+
+    li a0, 26
     j exit
+
 error27:
-    li a0 27
+
+    li a0, 27
     j exit
+
 error28:
-    li a0 28
+
+    li a0, 28
     j exit
+
 error29:
-    li a0 29
+
+    li a0, 29
     j exit
+
+
+
+
+
+
+
