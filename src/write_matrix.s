@@ -60,6 +60,7 @@ write_matrix:
     addi a0, x0, 8
     #malloc storage for the rows and columns of the matrix in memory
     jal malloc
+    mv s5, a0
     mv a1, s1 #hi
    
     sw s2, 44(sp)
@@ -73,6 +74,7 @@ write_matrix:
     bne a0, s7, error30
     
     #mv a0, a1 # hi
+    mv a0, s5
     jal ra, free
     
     #reset a0 to pointer to start of filename descriptor
